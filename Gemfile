@@ -25,6 +25,8 @@ group :development, :test do
   gem "dotenv-rails"
 end
 
+gem 'pg'
+
 
 group :development do
 
