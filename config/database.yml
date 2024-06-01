@@ -1,10 +1,10 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  host: db
-  username: postgres
-  password: password
   pool: 5
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  host: db
 
 development:
   <<: *default
@@ -17,5 +17,4 @@ test:
 production:
   <<: *default
   database: events_app_production
-  username: events_app
-  password: <%= ENV['EVENTS_APP_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
