@@ -1,9 +1,10 @@
-class CreateEvents < ActiveRecord::Migration[7.1]
+class CreateEvents < ActiveRecord::Migration[6.1]
   def change
-    create_table :events do |t|
-      t.string :category
-      t.string :content
-      t.references :user, null: false, foreign_key: true
+    enable_extension 'pgcrypto' unless extension_enabled?('pgcrypto')
+
+    create_table :events, id: :uuid do |t|
+      t.references :user, null: false, foreign_key: true, type: :uuid
+      t.datetime :deleted_at
 
       t.timestamps
     end
