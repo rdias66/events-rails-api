@@ -1,0 +1,7 @@
+POSTGRES_USER=root
+POSTGRES_PASSWORD=password
+POSTGRES_DB=events_app_development
+DATABASE_URL=postgresql://root:password@localhost:5432/events_app_development
+
+RAILS_ENV=development
+RACK_ENV=development
