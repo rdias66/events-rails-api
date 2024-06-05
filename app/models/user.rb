@@ -6,6 +6,10 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password_digest, presence: true
 
-  # Soft delete
+  # Soft delete scope
   scope :active, -> { where(deleted_at: nil) }
+
+  def destroy
+    update(deleted_at: Time.current)
+  end
 end
